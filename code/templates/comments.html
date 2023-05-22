@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>耳机商品检索库-商品评论信息</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+    <!-- <link href="css/bootstrap.min.css" rel="stylesheet">
+    <script src="js/jquery-3.2.1.min.js"></script> -->
+    <link rel="stylesheet" href="style.css" />
+    <style>
+        .title_font {
+            text-align: left;
+            font-weight: bold;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            -webkit-line-clamp: 2;
+            word-wrap: break-word;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            line-height: 20px;
+        }
+
+        .score {
+            line-height: 110%;
+            font-size: 25px;
+            color: #e4393c;
+            font-family: arial;
+        }
+
+        .keywords {
+            display: inline-block;
+            line-height: 20px;
+            padding: 0 9px;
+            border: 1px solid #e0e0e0;
+            border-radius: 2px;
+            margin-right: 10px;
+            margin-bottom: 10px;
+            color: #999;
+        }
+    </style>
+</head>
+
+<body>
+    <!--开头网页标题部分-->
+    <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
+        <div class="container">
+            <a href="#" class="navbar-brand">耳机商品检索库</a>
+
+            <a class="nav-link active" aria-current="page" href="/form"
+                style="text-decoration: none;color: white; float:right">返回主页</a>
+        </div>
+    </nav>
+
+    {% if status == 1 %}
+    <section class="p-5">
+        <div class="container">
+            <div class="row g-4" style="margin-left: 100px;">
+                <!--gap-->
+                <div class="col-md">
+                    <div class="card bg-light text-dark" style="height: 400px; width: 400px">
+                        <div class="card-body ">
+                            <h5 class="card-title text-center title_font">评论基本信息</h5>
+                            <div class="card-text">平均好感度：<span class="score">{{ score }}</span>
+                            </div>
+
+                            <div class="card-text" style="margin-top: 5px;">情感分析得分：<span style="font-weight:bold"> {{ comment_avg_score }} </span></div>
+                            <div class="card-text" style="margin-top: 5px;">评价关键词一览</div>
+                            
+                            <div style="margin-top: 10px;"></div>
+                            {% for i in range(length) %}
+                                <div class="keywords" style="margin-top: 2px;">{{ keyword_lst[i] }}</div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md">
+                    <div class="card bg-light text-dark" style="height: 400px; width: 400px">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">用户部分评论词云图</h5>
+                            <img src="{{ wordmap_src }}" height=280px width=350px>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+    </section>
+
+
+    {% else %}
+    <div class="container" style="margin-top: 50px;">
+        <div class="d-md-flex justify-content-between align-items-center">
+            <span style="margin-right: 5px;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor"
+                    class="bi bi-exclamation-circle" viewBox="0 0 16 16">
+                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
+                    <path
+                        d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995z" />
+                </svg>
+            </span>
+
+            <div style="font-size: large; display:inlin-block; text-align: center">很抱歉，目前您选择的商品详细信息尚未录入</div>>
+        </div>
+    </div>
+    {% endif %}
+
+
+</body>

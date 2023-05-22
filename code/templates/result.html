@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>耳机商品检索库-【{{keyword}}】</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+    <!-- <link rel="stylesheet" href= "bootstrap.min.css"> -->
+    <link rel="stylesheet" href="style.css" />
+
+    <style>
+        .mainContainer {
+            margin-left: 50px;
+            margin-right: 50px;
+        }
+
+        .goods-icons {
+            float: left;
+            height: 16px;
+            line-height: 16px;
+            padding: 0 3px;
+            margin-right: 3px;
+            overflow: hidden;
+            text-align: center;
+            font-style: normal;
+            font-size: 16px;
+            background: #e23a3a;
+            color: #FFF;
+            cursor: default;
+            border-radius: 2px;
+        }
+
+        .title_font {
+            text-align: left;
+            font-weight: bold;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            -webkit-line-clamp: 2;
+            word-wrap: break-word;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            line-height: 20px;
+        }
+
+
+        .price_font {
+            color: #e4393c;
+            text-align: left;
+            font-weight: 400;
+            font-size: large;
+            font-family: Verdana;
+        }
+
+        .number_comments {
+            color: #a7a7a7;
+            font-weight: 400;
+        }
+
+        .links {
+            float: left;
+            text-align: left;
+            height: 25px;
+            line-height: 25px;
+            border: 1px solid #DDD;
+            padding: 0 10px;
+            position: relative;
+            background: #fff;
+            color: #999;
+        }
+    </style>
+
+</head>
+
+<!--开头网页标题部分-->
+<div>
+    <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
+        <div class="container">
+            <a href="form" class="navbar-brand">耳机商品检索库</a>
+            <a class="nav-link active" aria-current="page" href="/form"
+                style="text-decoration: none;color: white; float:right">返回主页</a>
+        </div>
+    </nav>
+</div>
+
+<form action="result">
+    <section class="p-5 bg-primary text-light">
+        <div class="container">
+            <div class="d-md-flex justify-content-between align-items-center">
+                <span style="margin-right: 5px;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor"
+                        class="bi bi-search" viewBox="0 0 16 16">
+                        <path
+                            d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+                    </svg>
+                </span>
+
+                <div class="input-group news-input">
+                    <input type="text" class="form-control" placeholder="{{ keyword }}" , name="keyword" />
+                    <button class="btn btn-dark btn-lg">搜索</button>
+                </div>
+            </div>
+        </div>
+    </section>
+</form>
+
+<div class=mainContainer>
+    <div style="margin-left: 75px; font-size: 18px">
+        对<span style="font-weight: bold;">{{keyword}}</span>的搜索结果，共{{result_length}}条
+        <!-- 搜索结果的总导航栏 -->
+        <ul class="nav nav-tabs">
+            {% if brand_filter == 0 %}
+            <li class="nav-item">
+                <a class="nav-link" href="/result?keyword=漫步者 {{keyword}}&brand_filter=1&page={{page}}">漫步者</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/result?keyword=苹果 {{keyword}}&brand_filter=1&page={{page}}">苹果</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/result?keyword=JBL {{keyword}}&brand_filter=1&page={{page}}">JBL</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/result?keyword=华为 {{keyword}}&brand_filter=1&page={{page}}">华为</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/result?keyword=SONY {{keyword}}&brand_filter=1&page={{page}}">SONY</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/result?keyword=小米 {{keyword}}&brand_filter=1&page={{page}}">小米</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/result?keyword=beats {{keyword}}&brand_filter=1&page={{page}}">beats</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/result?keyword=联想 {{keyword}}&brand_filter=1&page={{page}}">联想</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/result?keyword=BOSE {{keyword}}&brand_filter=1&page={{page}}">BOSE</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/result?keyword=Oppo {{keyword}}&brand_filter=1&page={{page}}">Oppo</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/result?keyword=Vivo {{keyword}}&brand_filter=1&page={{page}}">Vivo</a>
+            </li>
+            {% endif %}
+
+            <li>
+                <div class="btn-group">
+                    {% if reverse == 0 %}
+                    <button type="button" class="btn btn-secondary" onclick="window.location.href = '/result?keyword={{keyword}}&sort={{sort}}&reverse=0'">
+                    {% else %}
+                    <button type="button" class="btn btn-outline-secondary" onclick="window.location.href = '/result?keyword={{keyword}}&sort={{sort}}&reverse=0'">
+                    {% endif %}
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-sort-down" viewBox="0 0 16 16">
+                            <path
+                                d="M3.5 2.5a.5.5 0 0 0-1 0v8.793l-1.146-1.147a.5.5 0 0 0-.708.708l2 1.999.007.007a.497.497 0 0 0 .7-.006l2-2a.5.5 0 0 0-.707-.708L3.5 11.293V2.5zm3.5 1a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zM7.5 6a.5.5 0 0 0 0 1h5a.5.5 0 0 0 0-1h-5zm0 3a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1h-3zm0 3a.5.5 0 0 0 0 1h1a.5.5 0 0 0 0-1h-1z">
+                            </path>
+                        </svg>
+                    </button>
+                    
+
+                    {% if reverse == 1 %}
+                    <button type="button" class="btn btn-secondary" onclick="window.location.href = '/result?keyword={{keyword}}&sort={{sort}}&reverse=1'">
+                    {% else %}
+                    <button type="button" class="btn btn-outline-secondary" onclick="window.location.href = '/result?keyword={{keyword}}&sort={{sort}}&reverse=1'">
+                    {% endif %}
+                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-sort-up" viewBox="0 0 16 16">
+                            <path
+                                d="M3.5 12.5a.5.5 0 0 1-1 0V3.707L1.354 4.854a.5.5 0 1 1-.708-.708l2-1.999.007-.007a.498.498 0 0 1 .7.006l2 2a.5.5 0 1 1-.707.708L3.5 3.707V12.5zm3.5-9a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1-.5-.5zM7.5 6a.5.5 0 0 0 0 1h5a.5.5 0 0 0 0-1h-5zm0 3a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1h-3zm0 3a.5.5 0 0 0 0 1h1a.5.5 0 0 0 0-1h-1z">
+                            </path>
+                        </svg>
+                    </button>
+                    
+                </div>
+            </li>
+
+            <li class="nav-item dropdown" style="float: right">
+                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
+                    aria-expanded="false">排序</a>
+                <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" href="/result?keyword={{keyword}}&sort=relevance">相关性</a></li>
+                    <li><a class="dropdown-item" href="/result?keyword={{keyword}}&sort=price">价格</a></li>
+                    <li><a class="dropdown-item" href="/result?keyword={{keyword}}&sort=quality">评论</a></li>
+            </li>
+
+
+        </ul>
+    </div>
+
+
+
+    {% if type_filter == 0 %}
+    <div style="margin-left: 75px; font-size: 18px">
+        <ul class="nav nav-tabs">
+            <li class="nav-item">
+                <a class="nav-link" href="/result?keyword=头戴式 {{keyword}}&type_filter=1&page={{page}}">头戴式</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/result?keyword=半入耳式 {{keyword}}&type_filter=1&page={{page}}">半入耳式</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/result?keyword=颈挂式 {{keyword}}&type_filter=1&page={{page}}">颈挂式</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/result?keyword=入耳式 {{keyword}}&type_filter=1&page={{page}}">入耳式</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/result?keyword=挂耳式 {{keyword}}&type_filter=1&page={{page}}">挂耳式</a>
+            </li>
+    </div>
+    {% endif %}
+
+    <!-- 翻页功能 -->
+    <div style="margin-top: 10px; font-size: 18px;">
+        <nav aria-label="..." style="margin-left: 100px">
+            <ul class="pagination">
+                {% if page == 1 %}
+                <li class="page-item disabled">
+                    <a class="page-link">Previous</a>
+                </li>
+                {% else %}
+                <li class="page-item">
+                    <a class="page-link" href="/result?keyword={{keyword}}&page={{page-1}}">Previous</a>
+                </li>
+                {% endif %}
+
+
+                {% for i in range(0, max_page)%}
+                    {% if i + 1 == page %}
+                    <li class="page-item active" aria-current="page">
+                        <a class="page-link" href="/result?keyword={{keyword}}&page={{i+1}}">{{i+1}}</a>
+                    </li>
+                    {% else %}
+                    <li class="page-item"><a class="page-link" href="/result?keyword={{keyword}}&page={{i+1}}">{{i+1}}</a>
+                    </li>
+                    {% endif %}
+                {% endfor %}
+
+                <li class="page-item">
+                    {% if page != max_page %}
+                    <a class="page-link" href="/result?keyword={{keyword}}&page={{page+1}}">Next</a>
+                    {% else %}
+                    <a class="page-link disabled" href="#">Next</a>
+                    {% endif %}
+                </li>
+
+            </ul>
+        </nav>
+    </div>
+
+
+    <!--只有这一部分显示与index.html不同，此处由搜索生成，为对应的card组件-->
+    {% for i in range(1, length) %}
+    <section class="p-5">
+        <div class="container">
+            <div class="row g-4">
+                <!--gap-->
+                <div class="col-md">
+                    <div class="card bg-light text-dark" style="height: 373px; width: 320px">
+                        <div class="card-body text-center">
+                            <div class="card-title text-danger">猜你喜欢
+                                <a href="/comments?target_url={{ product_url_lst[3*i-3] }}">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-square" viewBox="0 0 16 16">
+                                        <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
+                                        <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+                                      </svg>
+                                </a>
+                            </div>
+
+                            {% if pic_url_lst[3*i-3] != "" %}
+                            <img src="{{pic_url_lst[3*i-3]}}" alt="" class="w-50 done d-md-center mt-4">
+                            {% else %}
+                            <svg xmlns="http://www.w3.org/2000/svg" width="143" height="143" fill="currentColor"
+                                class="bi bi-file-image-fill" viewBox="0 0 16 16">
+                                <path
+                                    d="M4 0h8a2 2 0 0 1 2 2v8.293l-2.73-2.73a1 1 0 0 0-1.52.127l-1.889 2.644-1.769-1.062a1 1 0 0 0-1.222.15L2 12.292V2a2 2 0 0 1 2-2zm4.002 5.5a1.5 1.5 0 1 0-3 0 1.5 1.5 0 0 0 3 0z" />
+                                <path
+                                    d="M10.564 8.27 14 11.708V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2v-.293l3.578-3.577 2.56 1.536 2.426-3.395z" />
+                            </svg>
+                            {% endif %}
+
+                            <div class="price_font">￥{{price_lst[3*i-3]}}</div>
+
+                            <p class="title_font">
+                                {{title_lst[3*i-3]}}
+                            </p>
+                            {% if keyword_lst[3*i-3] != " " %}
+                            <span class="card-text goods-icons">
+                                {{ keyword_lst[3*i-3] }}
+                            </span>
+                            {% endif %}
+
+                            <div>
+                                <span class="number_comments">{{comments_lst[3*i-3]}}</span>评价
+                            </div>
+
+                            <span class="links" style="float: left;">
+                                <a href="{{shop_url_lst[3*i-3]}}" style="text-decoration: none; color: black">
+                                    前往该店铺
+                                </a>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                    class="bi bi-cart2" viewBox="0 0 16 16">
+                                    <path
+                                        d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l1.25 5h8.22l1.25-5H3.14zM5 13a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z" />
+                                </svg>
+                            </span>
+
+                            <span class="links" style="float: right">
+                                <a href="{{product_url_lst[3*i-3]}}"
+                                    style="text-decoration: none; color: black">购买该商品</a>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                    class="bi bi-bag-heart" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd"
+                                        d="M10.5 3.5a2.5 2.5 0 0 0-5 0V4h5v-.5Zm1 0V4H15v10a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V4h3.5v-.5a3.5 3.5 0 1 1 7 0ZM14 14V5H2v9a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1ZM8 7.993c1.664-1.711 5.825 1.283 0 5.132-5.825-3.85-1.664-6.843 0-5.132Z" />
+                                </svg>
+                            </span>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-md">
+                    <div class="card bg-light text-dark" style="height: 373px; width: 320px">
+                        <div class="card-body text-center">
+                            <div class="card-title text-danger">猜你喜欢
+                                <a href="/comments?target_url={{ product_url_lst[3*i-2] }}">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-square" viewBox="0 0 16 16">
+                                        <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
+                                        <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+                                      </svg>
+                                </a>
+                            </div>
+
+                            {% if pic_url_lst[3*i-2] != " " %}
+                            <img src="{{pic_url_lst[3*i-2]}}" alt="" class="w-50 done d-md-center mt-4">
+                            {% else %}
+                            <svg xmlns="http://www.w3.org/2000/svg" width="143" height="143" fill="currentColor"
+                                class="bi bi-file-image-fill" viewBox="0 0 16 16">
+                                <path
+                                    d="M4 0h8a2 2 0 0 1 2 2v8.293l-2.73-2.73a1 1 0 0 0-1.52.127l-1.889 2.644-1.769-1.062a1 1 0 0 0-1.222.15L2 12.292V2a2 2 0 0 1 2-2zm4.002 5.5a1.5 1.5 0 1 0-3 0 1.5 1.5 0 0 0 3 0z" />
+                                <path
+                                    d="M10.564 8.27 14 11.708V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2v-.293l3.578-3.577 2.56 1.536 2.426-3.395z" />
+                            </svg>
+                            {% endif %}
+
+                            <div class="price_font">￥{{price_lst[3*i-2]}}</div>
+
+                            <p class="title_font">
+                                {{title_lst[3*i-2]}}
+                            </p>
+                            {% if keyword_lst[3*i-2] != "" %}
+                            <span class="card-text goods-icons">
+                                {{ keyword_lst[3*i-2] }}
+                            </span>
+                            {% endif %}
+
+                            <div>
+                                <span class="number_comments">{{comments_lst[3*i-1]}}</span>评价
+                            </div>
+
+                            <span class="links" style="float: left;">
+                                <a href="{{shop_url_lst[3*i-2]}}" style="text-decoration: none; color: black">
+                                    前往该店铺
+                                </a>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                    class="bi bi-cart2" viewBox="0 0 16 16">
+                                    <path
+                                        d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l1.25 5h8.22l1.25-5H3.14zM5 13a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z" />
+                                </svg>
+                            </span>
+
+                            <span class="links" style="float: right">
+                                <a href="{{product_url_lst[3*i-2]}}"
+                                    style="text-decoration: none; color: black">购买该商品</a>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                    class="bi bi-bag-heart" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd"
+                                        d="M10.5 3.5a2.5 2.5 0 0 0-5 0V4h5v-.5Zm1 0V4H15v10a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V4h3.5v-.5a3.5 3.5 0 1 1 7 0ZM14 14V5H2v9a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1ZM8 7.993c1.664-1.711 5.825 1.283 0 5.132-5.825-3.85-1.664-6.843 0-5.132Z" />
+                                </svg>
+                            </span>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="col-md">
+                    <div class="card bg-light text-dark" style="height: 373px; width: 320px">
+                        <div class="card-body text-center">
+                            <div class="card-title text-danger">猜你喜欢
+                                <a href="/comments?target_url={{ product_url_lst[3*i-1] }}">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-square" viewBox="0 0 16 16">
+                                        <path d="M14 1a1 1 0 0 1 1 1v12a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"/>
+                                        <path d="m8.93 6.588-2.29.287-.082.38.45.083c.294.07.352.176.288.469l-.738 3.468c-.194.897.105 1.319.808 1.319.545 0 1.178-.252 1.465-.598l.088-.416c-.2.176-.492.246-.686.246-.275 0-.375-.193-.304-.533L8.93 6.588zM9 4.5a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/>
+                                      </svg>
+                                </a>
+                            </div>
+
+                            {% if pic_url_lst[3*i-1] != " " %}
+                            <img src="{{pic_url_lst[3*i-1]}}" alt="" class="w-50 done d-md-center mt-4">
+                            {% else %}
+                            <svg xmlns="http://www.w3.org/2000/svg" width="143" height="143" fill="currentColor"
+                                class="bi bi-file-image-fill" viewBox="0 0 16 16">
+                                <path
+                                    d="M4 0h8a2 2 0 0 1 2 2v8.293l-2.73-2.73a1 1 0 0 0-1.52.127l-1.889 2.644-1.769-1.062a1 1 0 0 0-1.222.15L2 12.292V2a2 2 0 0 1 2-2zm4.002 5.5a1.5 1.5 0 1 0-3 0 1.5 1.5 0 0 0 3 0z" />
+                                <path
+                                    d="M10.564 8.27 14 11.708V14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2v-.293l3.578-3.577 2.56 1.536 2.426-3.395z" />
+                            </svg>
+                            {% endif %}
+
+                            <div class="price_font">￥{{price_lst[3*i-1]}}</div>
+
+                            <p class="title_font">
+                                {{title_lst[3*i-1]}}
+                            </p>
+                            {% if keyword_lst[3*i-1] != "" %}
+                            <span class="card-text goods-icons">
+                                {{ keyword_lst[3*i-1] }}
+                            </span>
+                            {% endif %}
+
+                            <div>
+                                <span class="number_comments">{{comments_lst[3*i-1]}}</span>评价
+                            </div>
+
+                            <span class="links" style="float: left;">
+                                <a href="{{shop_url_lst[3*i-1]}}" style="text-decoration: none; color: black">
+                                    前往该店铺
+                                </a>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                    class="bi bi-cart2" viewBox="0 0 16 16">
+                                    <path
+                                        d="M0 2.5A.5.5 0 0 1 .5 2H2a.5.5 0 0 1 .485.379L2.89 4H14.5a.5.5 0 0 1 .485.621l-1.5 6A.5.5 0 0 1 13 11H4a.5.5 0 0 1-.485-.379L1.61 3H.5a.5.5 0 0 1-.5-.5zM3.14 5l1.25 5h8.22l1.25-5H3.14zM5 13a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0zm9-1a1 1 0 1 0 0 2 1 1 0 0 0 0-2zm-2 1a2 2 0 1 1 4 0 2 2 0 0 1-4 0z" />
+                                </svg>
+                            </span>
+
+                            <span class="links" style="float: right">
+                                <a href="{{ product_url_lst[3*i-1] }}"
+                                    style="text-decoration: none; color: black">购买该商品</a>
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                    class="bi bi-bag-heart" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd"
+                                        d="M10.5 3.5a2.5 2.5 0 0 0-5 0V4h5v-.5Zm1 0V4H15v10a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V4h3.5v-.5a3.5 3.5 0 1 1 7 0ZM14 14V5H2v9a1 1 0 0 0 1 1h10a1 1 0 0 0 1-1ZM8 7.993c1.664-1.711 5.825 1.283 0 5.132-5.825-3.85-1.664-6.843 0-5.132Z" />
+                                </svg>
+                            </span>
+                        </div>
+
+                    </div>
+                </div>
+    </section>
+    {% endfor %}
+</div>
+
+<section class="p-5">
+    <div class="container">
+        <h2 class="text-center mb-4">联系我们</h2>
+
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">小组成员：朱鹏翔、周晟洋、裴圣鑫、郭润泽</li>
+            <li class="list-group-item">上海交通大学 电子信息与电气工程学院 IEEE试点班</li>
+        </ul>
+    </div>
+</section>
+
+<footer class="p-5 bg-dark text-white text-center">
+    <div class="container">
+        <p class="lead">Copyright &copy; 2022 ICE2602 Group 2</p>
+    </div>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+</body>
+
+</html>

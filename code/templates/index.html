@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>耳机商品检索库-首页</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+    <!-- <link href="css/bootstrap.min.css" rel="stylesheet">
+    <script src="js/jquery-3.2.1.min.js"></script> -->
+    <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+    <!--开头网页标题部分-->
+    <nav class="navbar navbar-expand-lg bg-dark navbar-dark">
+        <div class="container">
+            <a href="#" class="navbar-brand">耳机商品检索库</a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navmenu">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+    </nav>
+
+    <!--搜索主体部分 下面的input组件可以进行搜索输入-->
+    <form action="result">
+        <section class="p-5 bg-primary text-light">
+            <div class="container">
+                <div class="d-md-flex justify-content-between align-items-center">
+                    <span style="margin-right: 5px;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="currentColor"
+                            class="bi bi-search" viewBox="0 0 16 16">
+                            <path
+                                d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+                        </svg>
+                    </span>
+                    <div class="input-group news-input">
+                        <input type="text" class="form-control" placeholder="请输入你想要的" name="keyword" />
+                        <button class="btn btn-dark btn-lg">搜索</button>
+                    </div>
+
+                    <span style="margin-left: 50px; margin-right: 5px"></span>
+
+                    <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" fill="currentColor" class="bi bi-file-earmark-image" viewBox="0 0 16 16">
+                        <path d="M6.502 7a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3z"/>
+                        <path d="M14 14a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h5.5L14 4.5V14zM4 1a1 1 0 0 0-1 1v10l2.224-2.224a.5.5 0 0 1 .61-.075L8 11l2.157-3.02a.5.5 0 0 1 .76-.063L13 10V4.5h-2A1.5 1.5 0 0 1 9.5 3V1H4z"/>
+                      </svg>
+
+                    <div class="input-group news-input">
+                        <input type="file" class="form-control" placeholder="周晟洋加的一个搜索文本的玩意" name="picture" />
+                        <button class="btn btn-dark btn-lg">Logo检索</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </form>
+
+    <section class="p-5">
+        <div class="container">
+            <div class="row g-4">
+                <!--gap-->
+                <div class="col-md">
+                    <div class="card bg-light text-dark" style="height: 373px; width: 320px">
+                        <img src="/static/index_pic1.png" class="card-img-top">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">京东</h5>
+                            <p class="card-text">多快好省、只为品质生活</p>
+                            <a href="https://www.jd.com" class="btn btn-primary">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-link-45deg" viewBox="0 0 16 16">
+                                <path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z"/>
+                                <path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z"/>
+                                </svg>
+                                前往官网</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md">
+                    <div class="card bg-light text-dark" style="height: 373px; width: 320px">
+                        <img src="/static/index_pic2.png" class="card-img-top">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">苏宁易购</h5>
+                            <p class="card-text">综合网上购物平台,商品涵盖家电、手机、电脑、超市、母婴、服装、百货、海外购等品类。</p>
+                            <a href="https://www.suning.com" class="btn btn-primary"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-link-45deg" viewBox="0 0 16 16">
+                                <path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z"/>
+                                <path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z"/>
+                                </svg>
+                                前往官网</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md">
+                    <div class="card bg-light text-dark" style="height: 373px; width: 320px">
+                        <img src="/static/index_pic3.png" class="card-img-top">
+                        <div class="card-body text-center">
+                            <h5 class="card-title">亚马逊</h5>
+                            <p class="card-text">亚马逊中国(z.cn)坚持“以客户为中心”的理念,秉承“天天低价,正品行货”信念,销售图书、电脑、数码家电、母婴百货、服饰箱包等上千万种产品。</p>
+                            <a href="https://www.amazon.cn/" class="btn btn-primary"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-link-45deg" viewBox="0 0 16 16">
+                                <path d="M4.715 6.542 3.343 7.914a3 3 0 1 0 4.243 4.243l1.828-1.829A3 3 0 0 0 8.586 5.5L8 6.086a1.002 1.002 0 0 0-.154.199 2 2 0 0 1 .861 3.337L6.88 11.45a2 2 0 1 1-2.83-2.83l.793-.792a4.018 4.018 0 0 1-.128-1.287z"/>
+                                <path d="M6.586 4.672A3 3 0 0 0 7.414 9.5l.775-.776a2 2 0 0 1-.896-3.346L9.12 3.55a2 2 0 1 1 2.83 2.83l-.793.792c.112.42.155.855.128 1.287l1.372-1.372a3 3 0 1 0-4.243-4.243L6.586 4.672z"/>
+                                </svg>
+                                前往官网</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    </section>
+
+
+    <!--装饰部分 下面信息可以更换-->
+    <section class="p-5">
+        <div class="container">
+            <h2 class="text-center mb-4">联系我们</h2>
+
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">小组成员：朱鹏翔、周晟洋、裴圣鑫、郭润泽</li>
+                <li class="list-group-item">上海交通大学 电子信息与电气工程学院 IEEE试点班</li>
+            </ul>
+        </div>
+    </section>
+
+    <footer class="p-5 bg-dark text-white text-center">
+        <div class="container">
+            <p class="lead">Copyright &copy; 2022 ICE2602 Group 2</p>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
